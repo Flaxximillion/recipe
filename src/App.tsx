@@ -14,6 +14,7 @@ const AppContainer = styled(Container)(() => ({
   flex: 1,
 }));
 
+// Used to debounce searches
 const debounce = (fn: Function, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (this: any, ...args: any[]) {
@@ -22,15 +23,18 @@ const debounce = (fn: Function, ms = 300) => {
   };
 };
 
+// Most of the state management is here. Eventually should be extrapolated into a separate file or library.
 export default function App() {
   const [state, setState] = useState({
     api: new Api(),
     loadingRecipes: false,
     randomRecipes: [],
     searchedRecipes: [],
+    // No actual error handling at this point. Intention was to use this field to pop up a toast component on API request error.
     erroredField: "",
   });
 
+  // Minor performance improvement if we extrapolate a state element that a hook has as a dependency
   const [searchQuery, setSearchQuery] = useState("");
 
   const contextualRecipes = () => {
@@ -73,6 +77,7 @@ export default function App() {
     }
   }, [searchQuery]);
 
+  // Initial call to retrieve random recipes.
   useEffect(() => {
     handleSetState({ loadingRecipes: true });
     state.api.getRandom({
