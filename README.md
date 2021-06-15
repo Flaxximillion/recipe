@@ -27,6 +27,7 @@ The state of this application is kept purposefully simple with hooks and passing
 * Fully flesh out desktop design
 * Add accessibility (missing `aria` attributes, some elements need to be replaced with more semantic counterparts like buttons)
 * Clean up component files by extrapolating styles and logic
+* Add error handling
 * Testing!
 
 
