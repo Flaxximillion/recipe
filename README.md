@@ -1,7 +1,3 @@
-# A cool recipe app
-
-Created for the Everlywell coding challenge. 
-
 ## Technologies
 - `create-react-app` - Allows us to quickly bootstrap a React application
 - `react-router` - For routing
